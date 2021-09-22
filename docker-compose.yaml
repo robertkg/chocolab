@@ -5,26 +5,57 @@ networks:
       config:
         - subnet: 172.20.0.0/24
 services:
-  chocoserver:
-    build: coreserver
-    container_name: chocoserver
-    dns:
-      - 8.8.8.8
-      - 8.8.4.4
-    environment:
-      - DOCKER=true
-    hostname: chocoserver
-    networks:
-      chocolab:
-        ipv4_address: 172.20.0.10
-    ports:
-      - '55986:5986'
-      - '13900:139'
-      - '8080:80'
-    tty: true
-  client:
-    build: coreserver
-    container_name: client
+  # chocoserver:
+  #   build: coreserver
+  #   container_name: chocoserver
+  #   dns:
+  #     - 8.8.8.8
+  #     - 8.8.4.4
+  #   environment:
+  #     - DOCKER=true
+  #   hostname: chocoserver
+  #   networks:
+  #     chocolab:
+  #       ipv4_address: 172.20.0.10
+  #   ports:
+  #     - '55986:5986'
+  #     - '13900:139'
+  #     - '8080:80'
+  #   tty: true
+  # client:
+  #   build: coreserver
+  #   container_name: client
+  #   dns:
+  #     - 8.8.8.8
+  #     - 8.8.4.4
+  #   environment:
+  #     - DOCKER=true
+  #   hostname: client
+  #   networks:
+  #     chocolab:
+  #       ipv4_address: 172.20.0.11
+  #   ports:
+  #     - '55987:5986'
+  #   tty: true
+  # proget:
+  #   build: coreserver
+  #   container_name: proget
+  #   dns:
+  #     - 8.8.8.8
+  #     - 8.8.4.4
+  #   environment:
+  #     - DOCKER=true
+  #   hostname: proget
+  #   networks:
+  #     chocolab:
+  #       ipv4_address: 172.20.0.12
+  #     ports:
+  #       - '55986:5986'
+  #       - '8080:80'
+  #     tty: true
+  proget:
+    build: proget
+    container_name: proget
     dns:
       - 8.8.8.8
       - 8.8.4.4
@@ -33,7 +64,5 @@ services:
     hostname: client
     networks:
       chocolab:
-        ipv4_address: 172.20.0.11
-    ports:
-      - '55987:5986'
+        ipv4_address: 172.20.0.13
     tty: true
